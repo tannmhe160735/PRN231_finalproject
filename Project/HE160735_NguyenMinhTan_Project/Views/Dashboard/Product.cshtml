@@ -1,0 +1,160 @@
+﻿@using HE160735_NguyenMinhTan_Project.Models;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Food> foods = (List<Food>)ViewData["Foods"];
+    List<Category> categories = (List<Category>)ViewData["Categories"];
+}
+<div class="container-fluid">
+    <div class="row">
+        @using (Html.BeginForm("Foodilter", "Dashboard", FormMethod.Post))
+        {
+            <div class="" style="">
+                <div style="display:flex; margin-bottom: 20px;">
+                    <div class="col-lg-5 col-md-5" style="margin-right: 50px;">
+                        <input type="text" name="foodname" class="form-control" id="foodname" placeholder="Food Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <div class="validate"></div>
+                    </div>
+                    <div class="col-lg-5 col-md-5">
+                        <input type="text" class="form-control" name="foodprice" id="foodprice" placeholder="Food Price" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <div class="validate"></div>
+                    </div>
+                </div>
+                <div style="display:flex; margin-bottom: 20px;">
+                    <div class="col-lg-5 col-md-5" style="margin-right: 50px;">
+                        <select name="category" id="category" class="form-control">
+                            @foreach (Category item in categories)
+                            {
+                                <option value="@item.CategoryId">@item.CategoryName</option>
+                            }
+                            <option value="All">All</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-5 col-md-5">
+                        <input type="text" class="form-control" name="fooddescription" id="fooddescription" placeholder="Food Description" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <div class="validate"></div>
+                    </div>
+                </div>
+                <div style="display:flex; margin-bottom: 20px;">
+                    <div class="col-lg-5 col-md-5">
+                        <input type="text" name="foodpricefrom" class="form-control" id="foodpricefrom" placeholder="Price From" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <div class="validate"></div>
+                    </div>
+                    <div>
+                        <div class="validate" style="margin-left: 9px; margin-right: 9px">-----</div>
+                    </div>
+                    <div class="col-lg-5 col-md-5">
+                        <input type="text" class="form-control" name="foodpriceto" id="foodpriceto" placeholder="Price To" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <div class="validate"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" style="background: var(--color-primary);border: 0;padding: 14px 60px;color: #fff;transition: 0.4s;border-radius: 50px;background: #ec2727;">
+                    FILLTER
+                </button>
+            </div>
+        }
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12 d-flex align-items-stretch">
+            <div class="card w-100">
+                <div class="card-body p-4">
+                    <h5 class="card-title fw-semibold mb-4">List Product</h5>
+                    <div class="table-responsive">
+                        <table class="table text-nowrap mb-0 align-middle">
+                            <thead class="text-dark fs-4">
+                                <tr>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Food_Id</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Food_Name</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Food_Description</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Food_Price</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Food_category</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Food_image</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Action</h6>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Food item in foods)
+                                {
+                                    <tr>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">@item.FoodId</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            @if (item.FoodName.Length > 10)
+                                            {
+                                                string str = item.FoodName;
+                                                string substr = str.Substring(0, 10) + "...";
+                                                <h6 class="fw-semibold mb-0 fs-4">@substr</h6>
+                                            }
+                                            else
+                                            {
+                                                <h6 class="fw-semibold mb-0 fs-4">@item.FoodName</h6>
+                                            }
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            @if (item.FoodDescription.Length > 29)
+                                            {
+                                                string str = item.FoodDescription;
+                                                string substr = str.Substring(0, 25) + "...";
+                                                <h6 class="fw-semibold mb-0 fs-4">@substr</h6>
+                                            }
+                                            else
+                                            {
+                                                <h6 class="fw-semibold mb-0 fs-4">@item.FoodDescription</h6>
+                                            }
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0 fs-4">@item.FoodPrice</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            @foreach (Category cate in categories)
+                                            {
+                                                @if(item.FoodCategory == cate.CategoryId)
+                                                {
+                                                    <h6 class="fw-semibold mb-0 fs-4">@cate.CategoryName</h6>
+                                                }
+                                            }
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <img src="@item.FoodImage" class="fw-semibold mb-0 fs-4" style="height: 100px; width:150px" />
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <div style="display: flex">
+                                                <div style="margin-right: 10px;">
+                                                    <a href="/Dashboard/ProductEdit?foodid=@item.FoodId" class="fw-semibold mb-0 fs-4">Edit</a>
+                                                </div>
+                                                <div>
+                                                    <a href="/Dashboard/ProductDelete?foodid=@item.FoodId" class="fw-semibold mb-0 fs-4">Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

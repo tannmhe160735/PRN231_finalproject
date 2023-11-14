@@ -1,0 +1,111 @@
+﻿@using HE160735_NguyenMinhTan_Project.Models;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    List<Book> books = (List<Book>)ViewData["Books"];
+}
+<div class="container-fluid" style="margin-bottom: 50px">
+    <div class="row">
+        @using (Html.BeginForm("BookFilter", "Dashboard", FormMethod.Post))
+        {
+            <div class="" style="">
+                <div style="display:flex; margin-bottom: 20px;">
+                    <div class="col-lg-5 col-md-5" style="margin-right: 50px;">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <div class="validate"></div>
+                    </div>
+                    <div class="col-lg-5 col-md-5">
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <div class="validate"></div>
+                    </div>
+                </div>
+                <div style="display:flex; margin-bottom: 20px;">
+                    <div class="col-lg-5 col-md-5" style="margin-right: 50px;">
+                        <input type="date" name="bookdate" class="form-control" id="date" placeholder="BookDate" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <div class="validate"></div>
+                    </div>
+                    <div class="col-lg-5 col-md-5">
+                        <input type="text" class="form-control" name="booktime" id="time" placeholder="BookTime" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <div class="validate"></div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 d-flex align-items-stretch">
+            <div class="card w-100">
+                <div class="card-body p-4">
+                    <h5 class="card-title fw-semibold mb-4">List Book</h5>
+                    <div class="table-responsive">
+                        <table class="table text-nowrap mb-0 align-middle">
+                            <thead class="text-dark fs-4">
+                                <tr>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">NO</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Name</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Email</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Phone</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Booktime</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">BookDate</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Number Of People</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Note</h6>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Book item in books)
+                                {
+                                    <tr>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0 fs-4">@item.BookId</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0 fs-4">@item.Name</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0 fs-4">@item.Email</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0 fs-4">@item.Phone</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0 fs-4">@item.BookTime</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0 fs-4">@item.BookDate</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0 fs-4">@item.NumberOfPeople</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0 fs-4">@item.Note</h6>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

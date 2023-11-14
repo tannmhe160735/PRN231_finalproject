@@ -1,0 +1,395 @@
+﻿@using HE160735_NguyenMinhTan_Project.Models;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    List<Food> foods = (List<Food>) ViewData["Foods"];
+    List<Food> Starters = foods.Where(f => f.FoodCategory == 1).ToList();
+    List<Food> Appetizers = foods.Where(f => f.FoodCategory == 2).ToList(); 
+    List<Food> MainDishes = foods.Where(f => f.FoodCategory == 3).ToList();
+    List<Food> Desserts = foods.Where(f => f.FoodCategory == 4).ToList();
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+
+}
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="hero d-flex align-items-center section-bg">
+    <div class="container">
+        <div class="row justify-content-between gy-5">
+            <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
+                <h2 data-aos="fade-up">Enjoy Your Healthy<br>Delicious Food</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Sed autem laudantium dolores. Voluptatem itaque ea consequatur eveniet. Eum quas beatae cumque eum quaerat.</p>
+                <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
+                    <a href="#book-a-table" class="btn-book-a-table">Book a Table</a>
+                    <a href="https://www.youtube.com/watch?v=FcEVbVrNIyg" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+                </div>
+            </div>
+            <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
+                <img src="~/assets/img/hero-img.png" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
+            </div>
+        </div>
+    </div>
+</section><!-- End Hero Section -->
+
+<main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+                <h2>About Us</h2>
+                <p>Learn More <span>About Us</span></p>
+            </div>
+
+            <div class="row gy-4">
+                <div class="col-lg-7 position-relative about-img" style="background-image: url(https://images.adsttc.com/media/images/5e4c/1025/6ee6/7e0b/9d00/0877/large_jpg/feature_-_Main_hall_1.jpg?1582043123) ;" data-aos="fade-up" data-aos-delay="150">
+                    <div class="call-us position-absolute">
+                        <h4>Book a Table</h4>
+                        <p>+1 5589 55488 55</p>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
+                    <div class="content ps-0 ps-lg-5">
+                        <p class="fst-italic">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqua.
+                        </p>
+                        <ul>
+                            <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                            <li><i class="bi bi-check2-all"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                            <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                        </ul>
+                        <p>
+                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
+                        </p>
+
+                        <div class="position-relative mt-4">
+                            <img src="~/assets/img/about-3.jpg" class="img-fluid" alt="">
+                            <a href="https://www.youtube.com/watch?v=FcEVbVrNIyg" class="glightbox play-btn"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End About Section -->
+    <!-- ======= Menu Section ======= -->
+    <section id="menu" class="menu">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+                <h2>Our Menu</h2>
+                <p>Check Our <span>Yummy Menu</span></p>
+            </div>
+
+            <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
+
+                <li class="nav-item">
+                    <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
+                        <h4>Starters</h4>
+                    </a>
+                </li><!-- End tab nav item -->
+
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-appetizer">
+                        <h4>Appetizer</h4>
+                    </a><!-- End tab nav item -->
+
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-mainDishes">
+                        <h4>MainDishes</h4>
+                    </a>
+                </li><!-- End tab nav item -->
+
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-dessert">
+                        <h4>Dessert</h4>
+                    </a>
+                </li><!-- End tab nav item -->
+            </ul>
+
+            <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
+
+                <div class="tab-pane fade active show" id="menu-starters">
+
+                    <div class="tab-header text-center">
+                        <p>Menu</p>
+                        <h3>Starters</h3>
+                    </div>
+
+                    <div class="row gy-5">
+                        @foreach (Food item in Starters)
+                        {
+                            <div class="col-lg-4 menu-item">
+                                <a href="assets/img/menu/menu-item-1.png" class="glightbox"><img src="@item.FoodImage" class="menu-img img-fluid" alt=""></a>
+                                <h4>@item.FoodName</h4>
+                                @if (item.FoodDescription.Length > 29)
+                                {
+                                    string str = item.FoodDescription;
+                                    string substr = str.Substring(0, 25) + "...";
+                                    <p class="ingredients">@substr</p>
+                                }
+                                else
+                                {
+                                    <p class="ingredients">@item.FoodDescription</p>
+                                }
+                                <p class="price">
+                                    @item.FoodPrice
+                                </p>
+                            </div>
+                            <!-- Menu Item -->
+                        }
+                    </div>
+                </div><!-- End Starter Menu Content -->
+
+                <div class="tab-pane fade" id="menu-appetizer">
+
+                    <div class="tab-header text-center">
+                        <p>Menu</p>
+                        <h3>Appetizer</h3>
+                    </div>
+
+                    <div class="row gy-5">
+                        @foreach (Food item in Appetizers)
+                        {
+                            <div class="col-lg-4 menu-item">
+                                <a href="assets/img/menu/menu-item-1.png" class="glightbox"><img src="@item.FoodImage" class="menu-img img-fluid" alt=""></a>
+                                <h4>@item.FoodName</h4>
+                                @if (item.FoodDescription.Length > 29)
+                                {
+                                    string str = item.FoodDescription;
+                                    string substr = str.Substring(0, 25) + "...";
+                                    <p class="ingredients">@substr</p>
+                                }
+                                else
+                                {
+                                    <p class="ingredients">@item.FoodDescription</p>
+                                }
+                                <p class="price">
+                                    @item.FoodPrice
+                                </p>
+                            </div>
+                            <!-- Menu Item -->
+                        }
+                    </div>
+
+                </div><!-- End Breakfast Menu Content -->
+
+                <div class="tab-pane fade" id="menu-mainDishes">
+
+                    <div class="tab-header text-center">
+                        <p>Menu</p>
+                        <h3>MainDishes</h3>
+                    </div>
+
+                    <div class="row gy-5">
+                        @foreach (Food item in MainDishes)
+                        {
+                            <div class="col-lg-4 menu-item">
+                                <a href="assets/img/menu/menu-item-1.png" class="glightbox"><img src="@item.FoodImage" class="menu-img img-fluid" alt=""></a>
+                                <h4>@item.FoodName</h4>
+                                @if (item.FoodDescription.Length > 29)
+                                {
+                                    string str = item.FoodDescription;
+                                    string substr = str.Substring(0, 25) + "...";
+                                    <p class="ingredients">@substr</p>
+                                }
+                                else
+                                {
+                                    <p class="ingredients">@item.FoodDescription</p>
+                                }
+                                <p class="price">
+                                    @item.FoodPrice
+                                </p>
+                            </div>
+                            <!-- Menu Item -->
+                        }
+                    </div>
+                </div><!-- End Lunch Menu Content -->
+
+                <div class="tab-pane fade" id="menu-dessert">
+
+                    <div class="tab-header text-center">
+                        <p>Menu</p>
+                        <h3>Dessert</h3>
+                    </div>
+
+                    <div class="row gy-5">
+                        @foreach (Food item in Desserts)
+                        {
+                            <div class="col-lg-4 menu-item">
+                                <a href="assets/img/menu/menu-item-1.png" class="glightbox"><img src="@item.FoodImage" class="menu-img img-fluid" alt=""></a>
+                                <h4>@item.FoodName</h4>
+                                @if (item.FoodDescription.Length > 29)
+                                {
+                                    string str = item.FoodDescription;
+                                    string substr = str.Substring(0, 25) + "...";
+                                    <p class="ingredients">@substr</p>
+                                }
+                                else
+                                {
+                                    <p class="ingredients">@item.FoodDescription</p>
+                                }
+                                <p class="price">
+                                    @item.FoodPrice
+                                </p>
+                            </div>
+                            <!-- Menu Item -->
+                        }
+                    </div>
+                </div><!-- End Dinner Menu Content -->
+            </div>
+        </div>
+    </section><!-- End Menu Section -->
+    <!-- ======= Book A Table Section ======= -->
+    <section id="book-a-table" class="book-a-table">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+                <h2>Book A Table</h2>
+                <p>Book <span>Your Stay</span> With Us</p>
+            </div>
+
+            <div class="row g-0">
+                <div style="display:flex">
+                    <div style="margin-right: 50px;">
+                        <img src="~/assets/img/reservation.jpg" style="height: 500px; width: 400px; background-size: cover; background-position: center;" />
+                    </div>
+                    <div class="col-lg-8 d-flex align-items-center reservation-form-bg">
+                        @using (Html.BeginForm("Book", "Home", FormMethod.Post))
+                        {
+                            <div class="row gy-4">
+                                <div class="col-lg-4 col-md-6">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <input type="date" name="date" class="form-control" id="date" placeholder="Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <input type="text" class="form-control" name="time" id="time" placeholder="Time" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <input type="number" class="form-control" name="people" id="people" placeholder="# of people" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
+                                    <div class="validate"></div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
+                                <div class="validate"></div>
+                            </div>
+                            <div class="mb-3">
+                                @if (ViewData["message"] != null)
+                                {
+                                    <div>@ViewData["message"]</div>
+                                }
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" style="background: var(--color-primary);border: 0;padding: 14px 60px;color: #fff;transition: 0.4s;border-radius: 50px;background: #ec2727;">
+                                    Book a Table
+                                </button>
+                            </div>
+                        }
+                    </div><!-- End Reservation Form -->
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Book A Table Section -->
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+                <h2>Contact</h2>
+                <p>Need Help? <span>Contact Us</span></p>
+            </div>
+
+            <div class="mb-3">
+                <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+            </div><!-- End Google Maps -->
+
+            <div class="row gy-4">
+
+                <div class="col-md-6">
+                    <div class="info-item  d-flex align-items-center">
+                        <i class="icon bi bi-map flex-shrink-0"></i>
+                        <div>
+                            <h3>Our Address</h3>
+                            <p>A108 Adam Street, New York, NY 535022</p>
+                        </div>
+                    </div>
+                </div><!-- End Info Item -->
+
+                <div class="col-md-6">
+                    <div class="info-item d-flex align-items-center">
+                        <i class="icon bi bi-envelope flex-shrink-0"></i>
+                        <div>
+                            <h3>Email Us</h3>
+                            <p>contact@example.com</p>
+                        </div>
+                    </div>
+                </div><!-- End Info Item -->
+
+                <div class="col-md-6">
+                    <div class="info-item  d-flex align-items-center">
+                        <i class="icon bi bi-telephone flex-shrink-0"></i>
+                        <div>
+                            <h3>Call Us</h3>
+                            <p>+1 5589 55488 55</p>
+                        </div>
+                    </div>
+                </div><!-- End Info Item -->
+
+                <div class="col-md-6">
+                    <div class="info-item  d-flex align-items-center">
+                        <i class="icon bi bi-share flex-shrink-0"></i>
+                        <div>
+                            <h3>Opening Hours</h3>
+                            <div>
+                                <strong>Mon-Sat:</strong> 11AM - 23PM;
+                                <strong>Sunday:</strong> Closed
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- End Info Item -->
+
+            </div>
+
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form p-3 p-md-4">
+                <div class="row">
+                    <div class="col-xl-6 form-group">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="col-xl-6 form-group">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                </div>
+                <div class="my-3">
+                    <div class="loading">Loading</div>
+                    <div class="error-message"></div>
+                    <div class="sent-message">Your message has been sent. Thank you!</div>
+                </div>
+                <div class="text-center"><button type="submit">Send Message</button></div>
+            </form><!--End Contact Form -->
+
+        </div>
+    </section><!-- End Contact Section -->
+
+</main><!-- End #main -->

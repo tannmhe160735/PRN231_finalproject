@@ -1,0 +1,133 @@
+﻿@using HE160735_NguyenMinhTan_Project.Models;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<User> users = (List<User>)ViewData["Users"];
+}
+<div class="container-fluid">
+    <div class="row">
+        @using (Html.BeginForm("UserFilter", "Dashboard", FormMethod.Post))
+        {
+            <div class="" style="">
+                <div style="display:flex; margin-bottom: 20px;">
+                    <div class="col-lg-5 col-md-5" style="margin-right: 50px;">
+                        <input type="text" name="username" class="form-control" id="name" placeholder="Username" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <div class="validate"></div>
+                    </div>
+                    <div class="col-lg-5 col-md-5">
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <div class="validate"></div>
+                    </div>
+                </div>
+                <div style="display:flex; margin-bottom: 20px;">
+                    <div class="col-lg-5 col-md-5" style="margin-right: 50px;">
+                        <select name="role" id="role" class="form-control">
+                            <option value="2">Admin</option>
+                            <option value="1">User</option>
+                            <option value="All">All</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-5 col-md-5">
+                        <input type="text" class="form-control" name="email" id="email" placeholder="Email" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <div class="validate"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" style="background: var(--color-primary);border: 0;padding: 14px 60px;color: #fff;transition: 0.4s;border-radius: 50px;background: #ec2727;">
+                    FILLTER
+                </button>
+            </div>
+        }
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 d-flex align-items-stretch">
+            <div class="card w-100">
+                <div class="card-body p-4">
+                    <h5 class="card-title fw-semibold mb-4">List User</h5>
+                    <div class="table-responsive">
+                        <table class="table text-nowrap mb-0 align-middle">
+                            <thead class="text-dark fs-4">
+                                <tr>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">User_Id</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Username</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Email</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Phone</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Role</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Action</h6>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (User item in users)
+                                {
+                                    <tr>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">@item.UserId</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0 fs-4">@item.Username</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0 fs-4">@item.Email</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0 fs-4">@item.Phone</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            @if (item.Role == 2)
+                                            {
+                                                <h6 class="fw-semibold mb-0 fs-4">Admin</h6>
+                                            }
+                                            @if (item.Role == 1)
+                                            {
+                                                <h6 class="fw-semibold mb-0 fs-4">User</h6>
+                                            }
+                                            @if (item.Role == 0)
+                                            {
+                                                <h6 class="fw-semibold mb-0 fs-4 text-danger">Banned</h6>
+                                            }
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <div style="display: flex">
+                                                @if (item.Role == 0)
+                                                {
+                                                    <div style="margin-right: 10px;">
+                                                        <a href="/Dashboard/UserUnBan?userid=@item.UserId" class="fw-semibold mb-0 fs-4">UnBan</a>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div style="margin-right: 10px;">
+                                                        <a href="/Dashboard/UserBan?userid=@item.UserId" class="fw-semibold mb-0 fs-4">Ban</a>
+                                                    </div>
+                                                }
+                                                <div>
+                                                    <a href="/Dashboard/UserDelete?userid=@item.UserId" class="fw-semibold mb-0 fs-4">Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
